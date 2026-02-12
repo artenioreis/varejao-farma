@@ -1,18 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Script.js carregado e DOM pronto!'); // Confirma que o script está sendo executado
+    console.log('Script.js carregado e DOM pronto!');
 
     // 1. Menu de Navegação Responsivo (Menu Hambúrguer)
     const menuToggle = document.querySelector('.menu-toggle');
     const navList = document.querySelector('.nav-list');
 
     if (menuToggle && navList) {
-        console.log('Menu de navegação encontrado.');
         menuToggle.addEventListener('click', () => {
             navList.classList.toggle('active');
             menuToggle.classList.toggle('active');
             const isExpanded = navList.classList.contains('active');
             menuToggle.setAttribute('aria-expanded', isExpanded);
-            console.log('Menu toggle clicado. Menu ativo:', isExpanded);
         });
 
         navList.querySelectorAll('a').forEach(link => {
@@ -21,24 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     navList.classList.remove('active');
                     menuToggle.classList.remove('active');
                     menuToggle.setAttribute('aria-expanded', false);
-                    console.log('Item do menu clicado em mobile, menu fechado.');
                 }
             });
         });
-    } else {
-        console.warn("Elementos do menu de navegação (menu-toggle ou nav-list) não encontrados. Verifique o HTML.");
     }
 
-    // 2. Scroll Suave para as Seções
+    // 2. Scroll Suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                const headerOffset = document.querySelector('.main-header').offsetHeight;
+                const headerElement = document.querySelector('.main-header');
+                const headerOffset = headerElement ? headerElement.offsetHeight : 0;
                 const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerOffset - 20;
 
@@ -46,9 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
-                console.log('Scroll suave para:', targetId);
-            } else {
-                console.warn('Elemento alvo para scroll suave não encontrado:', targetId);
             }
         });
     });
@@ -57,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
 
     if (contactForm) {
-        console.log('Formulário de contato encontrado.');
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             let isValid = true;
@@ -80,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
+            // Validação Nome
             const nameInput = document.getElementById('name');
             if (nameInput) {
                 if (nameInput.value.trim() === '') {
@@ -88,15 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     clearError(nameInput, 'name-error');
                 }
-            } else { console.warn('Campo "name" do formulário não encontrado.'); }
+            }
 
-
+            // Validação E-mail (CORRIGIDO: Regex em uma linha única)
             const emailInput = document.getElementById('email');
-            const emailPattern = /
-^
-[^\s@]+@[^\s@]+\.[^\s@]+
-$
-/;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
             if (emailInput) {
                 if (emailInput.value.trim() === '') {
                     displayError(emailInput, 'Por favor, digite seu e-mail.', 'email-error');
@@ -107,9 +96,9 @@ $
                 } else {
                     clearError(emailInput, 'email-error');
                 }
-            } else { console.warn('Campo "email" do formulário não encontrado.'); }
+            }
 
-
+            // Validação Mensagem
             const messageInput = document.getElementById('message');
             if (messageInput) {
                 if (messageInput.value.trim() === '') {
@@ -118,33 +107,26 @@ $
                 } else {
                     clearError(messageInput, 'message-error');
                 }
-            } else { console.warn('Campo "message" do formulário não encontrado.'); }
-
+            }
 
             if (isValid) {
                 alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
                 contactForm.reset();
-                console.log('Formulário enviado com sucesso (simulado).');
-            } else {
-                console.log('Validação do formulário falhou.');
             }
         });
 
+        // Limpar erros ao digitar
         contactForm.querySelectorAll('input, textarea').forEach(input => {
             input.addEventListener('input', () => {
                 if (input.classList.contains('invalid')) {
                     const errorSpanId = input.getAttribute('aria-describedby');
-                    if (errorSpanId) {
-                        clearError(input, errorSpanId);
-                    }
+                    if (errorSpanId) clearError(input, errorSpanId);
                 }
             });
         });
-    } else {
-        console.warn("Formulário de contato não encontrado. Verifique o HTML.");
     }
 
-    // 4. Destacar link de navegação ativo ao rolar
+    // 4. Highlight Link Ativo
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-list a');
 
@@ -168,11 +150,9 @@ $
             }
         });
     };
-
     window.addEventListener('scroll', highlightNavLink);
-    highlightNavLink();
 
-    // 5. Animação de Digitação (Typing Effect)
+    // 5. Animação de Digitação
     const typingTextElement = document.getElementById('typing-effect-text');
     const textToType = "Promovendo saúde, bem-estar e qualidade de vida desde 1999.";
     let charIndex = 0;
@@ -180,10 +160,7 @@ $
     let typeEffectTimeout;
 
     function typeEffect() {
-        if (!typingTextElement) {
-            console.warn("Elemento #typing-effect-text não encontrado. Animação de digitação não iniciada.");
-            return;
-        }
+        if (!typingTextElement) return;
 
         const currentText = textToType.substring(0, charIndex);
         typingTextElement.textContent = currentText;
@@ -191,110 +168,92 @@ $
         if (charIndex < textToType.length) {
             charIndex++;
             typeEffectTimeout = setTimeout(typeEffect, typingSpeed);
-        } else {
-            // Opcional: Se quiser que o cursor pisque no final, o CSS já está configurado
-            // typingTextElement.classList.add('typed-finished');
         }
     }
 
-    // 6. Carrossel de Imagens na Seção Hero
+    // 6. Carrossel de Imagens (Lógica Corrigida)
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dots .dot');
     const prevBtn = document.querySelector('.carousel-btn.prev');
     const nextBtn = document.querySelector('.carousel-btn.next');
+    
     let currentSlide = 0;
     let slideInterval;
-    const intervalTime = 5000; // Tempo em ms para a troca automática (5 segundos)
+    const intervalTime = 5000;
 
     if (slides.length > 0) {
-        console.log(`Carrossel encontrado com ${slides.length} slides.`);
+        console.log(`Carrossel iniciado com ${slides.length} slides.`);
 
         function showSlide(index) {
-            if (index < 0 || index >= slides.length) {
-                console.error('Índice de slide inválido:', index);
-                return;
-            }
+            // Garante que o índice seja válido (loop infinito)
+            if (index >= slides.length) index = 0;
+            if (index < 0) index = slides.length - 1;
 
-            // Remove a classe 'active' de todos os slides e dots
+            // Remove ativos
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
 
-            // Adiciona a classe 'active' ao slide e dot atual
+            // Ativa atual
             slides[index].classList.add('active');
             dots[index].classList.add('active');
-            console.log('Mostrando slide:', index);
 
-            // Reinicia a animação de digitação apenas para o primeiro slide
+            currentSlide = index; // Atualiza variável global
+
+            // Lógica do efeito de digitação apenas no slide 0
             if (index === 0 && typingTextElement) {
-                charIndex = 0; // Reseta o índice do caractere
-                typingTextElement.textContent = ''; // Limpa o texto
-                clearTimeout(typeEffectTimeout); // Limpa qualquer timeout anterior
-                typeEffect(); // Inicia a digitação novamente
-                console.log('Animação de digitação reiniciada para o slide 0.');
-            } else if (typingTextElement) {
-                // Se não for o primeiro slide, garante que o texto de digitação esteja vazio
+                charIndex = 0;
                 typingTextElement.textContent = '';
-                clearTimeout(typeEffectTimeout); // Garante que a digitação pare
+                clearTimeout(typeEffectTimeout);
+                typeEffect();
+            } else if (typingTextElement) {
+                clearTimeout(typeEffectTimeout);
             }
         }
 
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
+            showSlide(currentSlide + 1);
         }
 
         function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
+            showSlide(currentSlide - 1);
         }
 
         function startSlideShow() {
-            pauseSlideShow(); // Garante que não haja múltiplos intervalos rodando
+            stopSlideShow(); // Limpa intervalo anterior se existir
             slideInterval = setInterval(nextSlide, intervalTime);
-            console.log('Slideshow automático iniciado.');
         }
 
-        function pauseSlideShow() {
+        function stopSlideShow() {
             clearInterval(slideInterval);
-            console.log('Slideshow automático pausado.');
         }
 
-        // Event Listeners para botões de navegação
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                pauseSlideShow();
-                prevSlide();
-                startSlideShow(); // Reinicia o slideshow após navegação manual
-            });
-            console.log('Botão "anterior" do carrossel encontrado.');
-        } else { console.warn('Botão "anterior" do carrossel não encontrado.'); }
-
+        // Event Listeners
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
-                pauseSlideShow();
+                stopSlideShow();
                 nextSlide();
-                startSlideShow(); // Reinicia o slideshow após navegação manual
+                startSlideShow();
             });
-            console.log('Botão "próximo" do carrossel encontrado.');
-        } else { console.warn('Botão "próximo" do carrossel não encontrado.'); }
+        }
 
-        // Event Listeners para indicadores (dots)
-        if (dots.length > 0) {
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    pauseSlideShow();
-                    currentSlide = index;
-                    showSlide(currentSlide);
-                    startSlideShow(); // Reinicia o slideshow após navegação manual
-                });
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                stopSlideShow();
+                prevSlide();
+                startSlideShow();
             });
-            console.log(`${dots.length} indicadores de carrossel encontrados.`);
-        } else { console.warn('Nenhum indicador de carrossel (dots) encontrado.'); }
+        }
 
-        // Inicia o carrossel e o slideshow automático
-        showSlide(currentSlide); // Mostra o primeiro slide ao carregar
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                stopSlideShow();
+                showSlide(index);
+                startSlideShow();
+            });
+        });
+
+        // Inicialização
+        showSlide(currentSlide);
         startSlideShow();
-    } else {
-        console.warn("Nenhum slide de carrossel encontrado. Carrossel não iniciado. Verifique o HTML.");
     }
 });
