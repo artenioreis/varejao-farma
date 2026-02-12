@@ -37,11 +37,45 @@
 
     <main>
         <section id="hero" class="hero-section">
-            <div class="container">
-                <h1>Varejão Farma: Tradição, Inovação e Compromisso com a Saúde</h1>
-                <!-- A frase abaixo será o alvo da animação de digitação -->
-                <p><span id="typing-effect-text" aria-live="polite"></span></p> 
-                <a href="#nossa-historia" class="btn primary-btn">Conheça nossa história</a>
+            <div class="carousel-container">
+                <!-- Slide 1: Com a animação de digitação -->
+                <div class="carousel-slide active" style="background-image: url('assets/images/hero-slide-1.jpg');">
+                    <div class="overlay"></div>
+                    <div class="container carousel-content">
+                        <h1>Varejão Farma: Tradição, Inovação e Compromisso com a Saúde</h1>
+                        <p><span id="typing-effect-text" aria-live="polite"></span></p> 
+                        <a href="#nossa-historia" class="btn primary-btn">Conheça nossa história</a>
+                    </div>
+                </div>
+                <!-- Slide 2: Exemplo de outro conteúdo -->
+                <div class="carousel-slide" style="background-image: url('assets/images/hero-slide-2.jpg');">
+                    <div class="overlay"></div>
+                    <div class="container carousel-content">
+                        <h1>Sua Saúde em Primeiro Lugar</h1>
+                        <p>Variedade de produtos e atendimento humanizado para você e sua família.</p> 
+                        <a href="#nossos-parceiros" class="btn primary-btn">Nossos Parceiros</a>
+                    </div>
+                </div>
+                <!-- Slide 3: Exemplo de outro conteúdo -->
+                <div class="carousel-slide" style="background-image: url('assets/images/hero-slide-3.jpg');">
+                    <div class="overlay"></div>
+                    <div class="container carousel-content">
+                        <h1>Preço Justo e Confiança</h1>
+                        <p>Compromisso com a qualidade e acessibilidade em cada produto.</p> 
+                        <a href="#contato" class="btn primary-btn">Fale Conosco</a>
+                    </div>
+                </div>
+
+                <!-- Botões de navegação do carrossel -->
+                <button class="carousel-btn prev" aria-label="Slide anterior">&#10094;</button>
+                <button class="carousel-btn next" aria-label="Próximo slide">&#10095;</button>
+
+                <!-- Indicadores de slide -->
+                <div class="carousel-dots">
+                    <span class="dot active" data-slide-index="0" aria-label="Ir para o slide 1"></span>
+                    <span class="dot" data-slide-index="1" aria-label="Ir para o slide 2"></span>
+                    <span class="dot" data-slide-index="2" aria-label="Ir para o slide 3"></span>
+                </div>
             </div>
         </section>
 

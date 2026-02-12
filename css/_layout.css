@@ -89,31 +89,127 @@
     top: 8px;
 }
 
-/* Hero Section */
+/* Hero Section (Atualizado para Carrossel) */
 .hero-section {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/images/hero-background.jpg') no-repeat center center/cover;
-    color: var(--white);
-    text-align: center;
-    padding: 100px var(--spacing-md);
-    min-height: 60vh;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    width: 100%;
+    min-height: 60vh; /* Altura mínima para o carrossel */
+    overflow: hidden; /* Garante que os slides não transbordem */
+    display: flex; /* Para centralizar o conteúdo do carrossel */
     align-items: center;
     justify-content: center;
 }
 
-.hero-section h1 {
+.carousel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Redimensiona para cobrir o contêiner, cortando se necessário */
+    background-position: center; /* Centraliza a imagem no fundo */
+    opacity: 0; /* Esconde os slides por padrão */
+    transition: opacity 1s ease-in-out; /* Transição suave entre slides */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.carousel-slide.active {
+    opacity: 1; /* Mostra o slide ativo */
+}
+
+.carousel-slide .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Camada escura sobre a imagem */
+    z-index: 1;
+}
+
+.carousel-content {
+    position: relative;
+    z-index: 2; /* Garante que o conteúdo fique acima do overlay */
+    max-width: 800px;
+    padding: 0 var(--spacing-md);
+}
+
+.carousel-content h1 {
     color: var(--white);
     font-size: 2.8rem; /* Ajustado para mobile */
     margin-bottom: var(--spacing-md);
-    max-width: 800px; /* Limita a largura do título */
 }
 
-.hero-section p {
+.carousel-content p {
     font-size: var(--text-large-size);
     margin-bottom: var(--spacing-xl);
-    max-width: 700px; /* Limita a largura do parágrafo */
 }
+
+/* Botões de navegação do carrossel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 3; /* Acima dos slides e overlay */
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-btn.prev {
+    left: var(--spacing-md);
+}
+
+.carousel-btn.next {
+    right: var(--spacing-md);
+}
+
+/* Indicadores de slide (dots) */
+.carousel-dots {
+    position: absolute;
+    bottom: var(--spacing-md);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+    background-color: var(--white);
+    transform: scale(1.2);
+}
+
 
 /* Content Sections */
 .content-section {
@@ -166,7 +262,7 @@
 .main-footer {
     background-color: var(--primary-blue);
     color: var(--white);
-    padding: var(--spacing-xxl) 0;
+    padding: var(--spacing-xxl) 0; /* Aumentei o padding para mais espaço */
     font-size: 0.9rem;
 }
 
@@ -178,7 +274,7 @@
 }
 
 .footer-brand .logo-footer img {
-    height: 60px;
+    height: 60px; /* Ajuste o tamanho da logo no rodapé */
     margin-bottom: var(--spacing-sm);
 }
 
@@ -193,7 +289,7 @@
     color: var(--white);
     margin-bottom: var(--spacing-md);
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 600; /* Montserrat SemiBold */
 }
 
 .main-footer address {
@@ -206,8 +302,8 @@
 .map-container {
     position: relative;
     width: 100%;
-    height: 0; /* Removido o padding-bottom fixo para usar max-height */
-    padding-bottom: 75%; /* Proporção 4:3 para o mapa em mobile, pode ser ajustado */
+    height: 0;
+    padding-bottom: 75%; /* Proporção 4:3 para o mapa em mobile */
     max-height: 250px; /* Altura máxima para o mapa em telas maiores */
     overflow: hidden;
     border-radius: var(--border-radius);
@@ -239,8 +335,8 @@
 
     /* Ajuste da altura máxima do mapa para telas maiores */
     .map-container {
-        max-height: 150px; /* Altura máxima menor para desktop */
+        max-height: 200px; /* Altura máxima menor para desktop */
         padding-bottom: 0; /* Remove o padding-bottom para usar a altura fixa */
-        height: 150px; /* Define uma altura fixa para desktop */
+        height: 200px; /* Define uma altura fixa para desktop */
     }
 }
