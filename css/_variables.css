@@ -1,10 +1,17 @@
+/*
+ * _variables.css
+ * Define variáveis CSS para cores, fontes, espaçamentos, etc.
+ * Facilita a manutenção e a consistência do design.
+ */
+
 :root {
     /* Cores */
-    --primary-red: #E4002B;
-    --primary-blue: #3F307F;
+    --primary-red: #E4002B; /* Vermelho vibrante da logo */
+    --primary-blue: #3F307F; /* Azul arroxeado escuro da logo */
     --white: #FFFFFF;
-    --light-gray: #F8F8F8;
-    --dark-gray: #333333;
+    --light-gray: #F8F8F8; /* Para fundos de seções alternadas */
+    --medium-gray: #CCCCCC; /* Para bordas e divisores */
+    --dark-gray: #333333; /* Para textos de corpo, subtítulos */
     --black: #000000;
 
     /* Tipografia */
@@ -19,6 +26,7 @@
     --spacing-md: 1.5rem; /* 24px */
     --spacing-lg: 2rem;   /* 32px */
     --spacing-xl: 3rem;   /* 48px */
+    --spacing-xxl: 4rem;  /* 64px */
 
     /* Bordas e Sombras */
     --border-radius: 5px;

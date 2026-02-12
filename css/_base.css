@@ -1,4 +1,9 @@
-/* Reset Básico */
+/*
+ * _base.css
+ * Contém estilos globais, reset CSS e tipografia base.
+ */
+
+/* Reset Básico para remover margens e paddings padrão do navegador */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +11,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Rolagem suave para links âncora */
 }
 
 body {
@@ -15,14 +20,17 @@ body {
     line-height: 1.6;
     color: var(--dark-gray);
     background-color: var(--white);
+    -webkit-font-smoothing: antialiased; /* Melhorar renderização de fontes no WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Melhorar renderização de fontes no Firefox */
 }
 
-/* Tipografia */
+/* Tipografia para títulos */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     color: var(--primary-blue);
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
+    font-weight: 700; /* Montserrat Bold */
 }
 
 h1 { font-size: 2.5rem; } /* 40px */
@@ -39,17 +47,38 @@ a {
     transition: color 0.3s ease;
 }
 
-a:hover {
+a:hover, a:focus {
     color: var(--primary-blue);
+    outline: none; /* Remover outline padrão para melhor UX, mas garantir foco visível com outra estilização */
 }
 
 ul {
     list-style: none;
 }
 
-/* Container para centralizar conteúdo */
+/* Estilo para listas de valores */
+.content-section ul {
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.content-section ul li {
+    position: relative;
+    margin-bottom: var(--spacing-xs);
+    padding-left: var(--spacing-md);
+}
+
+.content-section ul li::before {
+    content: '•'; /* Marcador de lista customizado */
+    color: var(--primary-red);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Container para centralizar conteúdo e limitar largura */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-md); /* Padding lateral para telas menores */
 }

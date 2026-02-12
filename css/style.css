@@ -1,6 +1,39 @@
-/* Importa variáveis e estilos base */
+/*
+ * style.css
+ * Arquivo CSS principal para o Varejão Farma
+ * Importa outros arquivos CSS para modularização e organização.
+ */
+
+/* Importa variáveis de cores, fontes e espaçamentos */
 @import url('_variables.css');
+
+/* Importa estilos base como reset, tipografia global */
 @import url('_base.css');
+
+/* Importa estilos de layout para cabeçalho, rodapé, seções */
 @import url('_layout.css');
+
+/* Importa estilos para componentes reutilizáveis como botões, formulários */
 @import url('_components.css');
-@import url('_responsive.css'); /* Media queries para responsividade */
+
+/* Importa media queries para responsividade */
+@import url('_responsive.css');
+
+/*
+ * Adicione quaisquer estilos globais ou overrides específicos aqui,
+ * se necessário, que não se encaixem nas categorias acima.
+ */
+
+/* Exemplo de estilo para o cursor da animação de digitação (opcional) */
+#typing-effect-text::after {
+    content: '|'; /* Caractere do cursor */
+    display: inline-block;
+    animation: blink-caret 0.75s step-end infinite;
+    margin-left: 3px;
+    color: var(--white); /* Cor do cursor */
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--white); } /* Cor do cursor piscando */
+}
