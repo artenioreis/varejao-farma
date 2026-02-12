@@ -1,0 +1,26 @@
+:root {
+    /* Cores */
+    --primary-red: #E4002B;
+    --primary-blue: #3F307F;
+    --white: #FFFFFF;
+    --light-gray: #F8F8F8;
+    --dark-gray: #333333;
+    --black: #000000;
+
+    /* Tipografia */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    --text-base-size: 1rem; /* 16px */
+    --text-large-size: 1.125rem; /* 18px */
+
+    /* Espaçamentos */
+    --spacing-xs: 0.5rem; /* 8px */
+    --spacing-sm: 1rem;   /* 16px */
+    --spacing-md: 1.5rem; /* 24px */
+    --spacing-lg: 2rem;   /* 32px */
+    --spacing-xl: 3rem;   /* 48px */
+
+    /* Bordas e Sombras */
+    --border-radius: 5px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}

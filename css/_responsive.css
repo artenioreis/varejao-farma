@@ -1,0 +1,92 @@
+/* Mobile-first: Estilos padrão já são para mobile */
+
+/* Tablet e Telas Maiores (ex: 768px e acima) */
+@media (min-width: 768px) {
+    .main-header .logo img {
+        height: 60px;
+    }
+
+    .hero-section {
+        padding: 120px var(--spacing-md);
+        min-height: 70vh;
+    }
+
+    .hero-section h1 {
+        font-size: 4rem; /* 64px */
+    }
+
+    h1 { font-size: 3rem; } /* 48px */
+    h2 { font-size: 2.5rem; } /* 40px */
+    h3 { font-size: 2rem; } /* 32px */
+}
+
+/* Desktop (ex: 1024px e acima) */
+@media (min-width: 1024px) {
+    .main-header .logo img {
+        height: 70px;
+    }
+
+    .hero-section {
+        padding: 150px var(--spacing-md);
+        min-height: 80vh;
+    }
+
+    .hero-section h1 {
+        font-size: 5rem; /* 80px */
+    }
+
+    h1 { font-size: 3.5rem; } /* 56px */
+    h2 { font-size: 3rem; } /* 48px */
+    h3 { font-size: 2.5rem; } /* 40px */
+}
+
+/* Responsividade do Menu de Navegação */
+@media (max-width: 767px) {
+    .main-nav .nav-list {
+        display: none; /* Esconde a lista de navegação por padrão */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Abaixo do header */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-blue);
+        box-shadow: var(--box-shadow);
+        padding: var(--spacing-sm) 0;
+        text-align: center;
+    }
+
+    .main-nav .nav-list.active {
+        display: flex; /* Mostra a lista quando o menu está ativo */
+    }
+
+    .main-nav .nav-list li {
+        margin: var(--spacing-xs) 0;
+    }
+
+    .main-nav .nav-list li a {
+        color: var(--white);
+        padding: var(--spacing-sm) var(--spacing-md);
+        display: block;
+    }
+
+    .main-nav .nav-list li a::after {
+        background-color: var(--primary-red); /* Cor diferente para o hover no menu mobile */
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o botão de menu hambúrguer */
+    }
+
+    /* Animação do hambúrguer */
+    .menu-toggle.active .hamburger {
+        background-color: transparent;
+    }
+
+    .menu-toggle.active .hamburger::before {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.active .hamburger::after {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}

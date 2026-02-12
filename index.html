@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varejão Farma - Saúde, Bem-Estar e Qualidade de Vida</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- Fontes do Google Fonts (exemplo: Montserrat e Open Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="#hero" class="logo">
+                <img src="assets/images/logo.png" alt="Logo Varejão Farma">
+            </a>
+            <nav class="main-nav">
+                <button class="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="#nossa-historia">Nossa História</a></li>
+                    <li><a href="#missao">Missão</a></li>
+                    <li><a href="#valores">Valores</a></li>
+                    <li><a href="#visao">Visão</a></li>
+                    <li><a href="#nossos-parceiros">Nossos Parceiros</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h1>Varejão Farma: Tradição, Inovação e Compromisso com a Saúde</h1>
+                <!-- A frase abaixo será o alvo da animação de digitação -->
+                <p><span id="typing-effect-text" aria-live="polite"></span></p> 
+                <a href="#nossa-historia" class="btn primary-btn">Conheça nossa história</a>
+            </div>
+        </section>
+
+        <section id="nossa-historia" class="content-section bg-light-gray">
+            <div class="container">
+                <h2>Nossa História</h2>
+                <p>O Varejão Farma nasceu da evolução de uma trajetória sólida no setor farmacêutico. Nossa história começou em 28 de junho de 1999, com a fundação do Varejão dos Comprimidos, atuando no comércio varejista e atacadista (atacarejo) de produtos farmacêuticos, sempre com foco em qualidade, confiança e acessibilidade.</p>
+                <p>Ao longo dos anos, crescemos, fortalecemos parcerias e acompanhamos as transformações do mercado e das necessidades dos nossos clientes. Esse movimento natural de crescimento nos levou a um novo capítulo.</p>
+                <p>Em 13 de novembro de 2025, realizamos a reinauguração da loja, marcando também a mudança oficial de nome para Varejão Farma, uma identidade mais moderna, alinhada à nossa essência, aos nossos valores e ao futuro que queremos construir.</p>
+                <p>Hoje, o Varejão Farma representa tradição, inovação e compromisso com a saúde, mantendo a confiança conquistada ao longo de mais de duas décadas.</p>
+            </div>
+        </section>
+
+        <section id="missao" class="content-section">
+            <div class="container">
+                <h2>Missão</h2>
+                <p>Promover saúde, bem-estar e qualidade de vida, oferecendo produtos farmacêuticos e de higiene com preço justo, confiança e atendimento humanizado, valorizando nossos clientes, colaboradores e parceiros todos os dias.</p>
+            </div>
+        </section>
+
+        <section id="valores" class="content-section bg-light-gray">
+            <div class="container">
+                <h2>Valores</h2>
+                <ul>
+                    <li>Cuidado com as pessoas.</li>
+                    <li>Ética e transparência em todas as relações.</li>
+                    <li>Compromisso com a saúde e o bem-estar.</li>
+                    <li>Atendimento humanizado e próximo.</li>
+                    <li>Trabalho em equipe.</li>
+                    <li>Responsabilidade e confiança.</li>
+                    <li>Foco em resultados com propósito.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="visao" class="content-section">
+            <div class="container">
+                <h2>Visão</h2>
+                <p>Ser referência regional como um varejo farmacêutico acessível, confiável e próximo das pessoas, reconhecido pela excelência no atendimento, variedade de produtos e compromisso com a saúde.</p>
+            </div>
+        </section>
+
+        <section id="nossos-parceiros" class="content-section bg-light-gray">
+            <div class="container">
+                <h2>Nossos Parceiros</h2>
+                <p>Acreditamos que bons resultados são construídos em conjunto. Por isso, mantemos parcerias sólidas com fornecedores, laboratórios e distribuidores reconhecidos, que compartilham dos nossos valores e do nosso compromisso com qualidade, segurança e confiança.</p>
+                <p>Essas parcerias nos permitem oferecer um portfólio completo de produtos, preços competitivos e um atendimento cada vez mais eficiente aos nossos clientes.</p>
+                <div class="partners-grid">
+                    <!-- Exemplo de logos de parceiros (substitua por suas imagens reais) -->
+                    <img src="assets/images/partner-logo-1.png" alt="Logo Parceiro 1">
+                    <img src="assets/images/partner-logo-2.png" alt="Logo Parceiro 2">
+                    <img src="assets/images/partner-logo-3.png" alt="Logo Parceiro 3">
+                    <img src="assets/images/partner-logo-4.png" alt="Logo Parceiro 4">
+                    <img src="assets/images/partner-logo-5.png" alt="Logo Parceiro 5">
+                    <!-- Adicione mais logos conforme necessário -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato com formulário simples -->
+        <section id="contato" class="content-section">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <form id="contact-form" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
+                        <span id="name-error" class="error-message" aria-live="polite"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
+                        <span id="email-error" class="error-message" aria-live="polite"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem:</label>
+                        <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="message-error"></textarea>
+                        <span id="message-error" class="error-message" aria-live="polite"></span>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Varejão Farma. Todos os direitos reservados.</p>
+            <address>
+                Rua Governador Sampaio, 234 - Centro/ Fortaleza.
+            </address>
+        </div>
+    </footer>
+
+    <!-- O script.js deve ser carregado no final do body para garantir que o HTML esteja disponível -->
+    <script src="js/script.js"></script>
+</body>
+</html>

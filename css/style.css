@@ -1,0 +1,6 @@
+/* Importa variáveis e estilos base */
+@import url('_variables.css');
+@import url('_base.css');
+@import url('_layout.css');
+@import url('_components.css');
+@import url('_responsive.css'); /* Media queries para responsividade */
