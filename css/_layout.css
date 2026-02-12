@@ -3,14 +3,16 @@
  * Estilos para a estrutura principal do site: cabeçalho, rodapé, seções.
  */
 
-/* Header */
+/* =========================================
+   1. Header (Cabeçalho)
+   ========================================= */
 .main-header {
     background-color: var(--white);
     padding: var(--spacing-sm) 0;
     box-shadow: var(--box-shadow);
-    position: sticky; 
+    position: sticky; /* Header fixo no topo */
     top: 0;
-    z-index: 1000; 
+    z-index: 1000; /* Garante que o header fique acima de outros elementos */
 }
 
 .main-header .container {
@@ -20,10 +22,18 @@
 }
 
 .main-header .logo img {
-    height: 50px; 
+    height: 50px; /* Ajuste inicial para mobile */
     width: auto;
 }
 
+/* Container que agrupa Nav e Social no Header */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Navegação Principal */
 .main-nav .nav-list {
     display: flex;
     gap: var(--spacing-lg);
@@ -31,11 +41,12 @@
 
 .main-nav .nav-list li a {
     color: var(--primary-blue);
-    font-weight: 600; 
+    font-weight: 600; /* Montserrat SemiBold */
     padding: var(--spacing-xs) 0;
     position: relative;
 }
 
+/* Efeito de sublinhado no hover */
 .main-nav .nav-list li a::after {
     content: '';
     position: absolute;
@@ -52,13 +63,32 @@
     width: 100%;
 }
 
+/* Ícones Sociais do Header */
+.header-social {
+    display: none; /* Escondido por padrão no mobile para não poluir */
+    gap: var(--spacing-sm);
+    padding-left: var(--spacing-md);
+    border-left: 1px solid var(--medium-gray); /* Divisória sutil */
+}
+
+.header-social a {
+    color: var(--primary-blue); /* Azul da marca */
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.header-social a:hover {
+    color: var(--primary-red); /* Vermelho no hover */
+}
+
+/* Menu Hambúrguer (Mobile) */
 .menu-toggle {
-    display: none; 
+    display: none; /* Escondido por padrão em desktop */
     background: none;
     border: none;
     cursor: pointer;
     padding: var(--spacing-xs);
-    z-index: 1001; 
+    z-index: 1001; /* Acima do nav-list quando aberto */
 }
 
 .hamburger {
@@ -89,24 +119,19 @@
     top: 8px;
 }
 
-/* Hero Section (Carrossel Ajustado para Preencher Tudo) */
+/* =========================================
+   2. Hero Section (Carrossel)
+   ========================================= */
 .hero-section {
     position: relative;
     width: 100%;
     /* Altura ajustada para mobile para evitar corte excessivo da imagem */
     min-height: 50vh; 
-    overflow: hidden; 
-    display: flex; 
+    overflow: hidden; /* Garante que os slides não transbordem */
+    display: flex; /* Para centralizar conteúdo se houver */
     align-items: center;
     justify-content: center;
     background-color: var(--light-gray);
-}
-
-/* Ajuste de altura para telas maiores (Desktop) */
-@media (min-width: 768px) {
-    .hero-section {
-        min-height: 70vh; /* Mais alto em telas grandes */
-    }
 }
 
 .carousel-container {
@@ -117,6 +142,7 @@
     height: 100%;
 }
 
+/* Slide Individual */
 .carousel-slide {
     position: absolute;
     top: 0;
@@ -124,13 +150,13 @@
     width: 100%;
     height: 100%;
     
-    /* MUDANÇA PRINCIPAL: cover preenche todo o espaço (sem barras brancas) */
+    /* CONFIGURAÇÃO IMPORTANTE PARA PREENCHER TELA */
     background-size: cover; 
     background-position: center center; /* Centraliza o foco da imagem */
     background-repeat: no-repeat;
     
-    opacity: 0; 
-    transition: opacity 1s ease-in-out; 
+    opacity: 0; /* Esconde os slides por padrão */
+    transition: opacity 1s ease-in-out; /* Transição suave entre slides */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -140,10 +166,11 @@
 }
 
 .carousel-slide.active {
-    opacity: 1; 
+    opacity: 1; /* Mostra o slide ativo */
     z-index: 1;
 }
 
+/* Overlay (Camada escura opcional) */
 .carousel-slide .overlay {
     position: absolute;
     top: 0;
@@ -171,18 +198,18 @@
     margin-bottom: var(--spacing-xl);
 }
 
-/* Botões de navegação do carrossel */
+/* Botões de navegação do carrossel (Setas) */
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.3); /* Mais sutil */
+    background-color: rgba(0, 0, 0, 0.3); /* Fundo sutil */
     color: var(--white);
     border: none;
     padding: var(--spacing-sm) var(--spacing-md);
     cursor: pointer;
     font-size: 1.5rem;
-    z-index: 10; 
+    z-index: 10; /* Acima dos slides */
     border-radius: var(--border-radius);
     transition: background-color 0.3s ease;
 }
@@ -199,7 +226,7 @@
     right: var(--spacing-md);
 }
 
-/* Indicadores de slide (dots) */
+/* Indicadores de slide (Bolinhas) */
 .carousel-dots {
     position: absolute;
     bottom: var(--spacing-md);
@@ -213,11 +240,11 @@
 .carousel-dots .dot {
     width: 10px;
     height: 10px;
-    background-color: rgba(255, 255, 255, 0.5); /* Branco semitransparente fica melhor em cima de fotos */
+    background-color: rgba(255, 255, 255, 0.5); /* Branco semitransparente */
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Sombra para garantir visibilidade */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Sombra para contraste */
 }
 
 .carousel-dots .dot.active {
@@ -225,10 +252,11 @@
     transform: scale(1.2);
 }
 
-
-/* Content Sections */
+/* =========================================
+   3. Seções de Conteúdo
+   ========================================= */
 .content-section {
-    padding: var(--spacing-xxl) 0; 
+    padding: var(--spacing-xxl) 0; /* Padding maior para seções */
 }
 
 .content-section.bg-light-gray {
@@ -241,6 +269,7 @@
     position: relative;
 }
 
+/* Linha decorativa abaixo do título H2 */
 .content-section h2::after {
     content: '';
     display: block;
@@ -251,9 +280,10 @@
     border-radius: 2px;
 }
 
+/* Grid de Parceiros */
 .partners-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: var(--spacing-lg);
     justify-items: center;
     align-items: center;
@@ -263,33 +293,35 @@
 .partners-grid img {
     max-width: 100%;
     height: auto;
-    filter: grayscale(100%); 
+    filter: grayscale(100%); /* Efeito preto e branco */
     opacity: 0.7;
     transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
 .partners-grid img:hover {
-    filter: grayscale(0%);
+    filter: grayscale(0%); /* Colorido no hover */
     opacity: 1;
 }
 
-/* Footer */
+/* =========================================
+   4. Footer (Rodapé)
+   ========================================= */
 .main-footer {
     background-color: var(--primary-blue);
     color: var(--white);
-    padding: var(--spacing-xxl) 0; 
+    padding: var(--spacing-xxl) 0;
     font-size: 0.9rem;
 }
 
 .main-footer .footer-grid {
     display: grid;
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr; /* Uma coluna em mobile */
     gap: var(--spacing-xl);
-    text-align: center; 
+    text-align: center; /* Centraliza o texto em mobile */
 }
 
 .footer-brand .logo-footer img {
-    height: 60px; 
+    height: 60px;
     margin-bottom: var(--spacing-sm);
 }
 
@@ -304,7 +336,7 @@
     color: var(--white);
     margin-bottom: var(--spacing-md);
     font-size: 1.2rem;
-    font-weight: 600; 
+    font-weight: 600; /* Montserrat SemiBold */
 }
 
 .main-footer address {
@@ -313,12 +345,31 @@
     line-height: 1.8;
 }
 
+/* Redes Sociais do Footer */
+.social-links {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center; /* Centralizado no mobile */
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem; /* Tamanho do ícone */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-red); /* Cor de destaque da marca */
+    transform: translateY(-3px); /* Leve movimento ao passar o mouse */
+}
+
 /* Mapa */
 .map-container {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 75%; 
+    padding-bottom: 75%; /* Proporção 4:3 para o mapa em mobile */
     max-height: 250px; 
     overflow: hidden;
     border-radius: var(--border-radius);
@@ -335,7 +386,21 @@
     border: 0;
 }
 
+/* =========================================
+   5. Responsividade (Tablet e Desktop)
+   ========================================= */
 @media (min-width: 768px) {
+    /* Mostra os ícones do topo apenas em telas maiores */
+    .header-social {
+        display: flex;
+    }
+
+    /* Ajuste da altura do Hero para telas maiores */
+    .hero-section {
+        min-height: 70vh; 
+    }
+
+    /* Grid do Footer em 3 colunas */
     .main-footer .footer-grid {
         grid-template-columns: repeat(3, 1fr);
         text-align: left;
@@ -346,7 +411,13 @@
     .footer-map {
         text-align: left;
     }
+    
+    /* Alinha ícones sociais do footer à esquerda em desktop */
+    .social-links {
+        justify-content: flex-start;
+    }
 
+    /* Ajuste do Mapa para desktop */
     .map-container {
         max-height: 200px; 
         padding-bottom: 0; 
