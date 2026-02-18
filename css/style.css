@@ -4,19 +4,10 @@
  * Importa outros arquivos CSS para modularização e organização.
  */
 
-/* Importa variáveis de cores, fontes e espaçamentos */
 @import url('./variables.css');
-
-/* Importa estilos base como reset, tipografia global */
 @import url('./base.css');
-
-/* Importa estilos de layout para cabeçalho, rodapé, seções */
 @import url('./layout.css');
-
-/* Importa estilos para componentes reutilizáveis como botões, formulários */
 @import url('./components.css');
-
-/* Importa media queries para responsividade */
 @import url('./responsive.css');
 
 /*
