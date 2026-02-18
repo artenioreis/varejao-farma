@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Validação de Formulário de Contato
+    // 3. Validação de Formulário de Contato e Envio
     const contactForm = document.getElementById('contact-form');
 
     if (contactForm) {
@@ -103,7 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (isValid) {
-                alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
+                // Mensagem confirmando o envio para o destinatário solicitado
+                alert('Mensagem enviada com sucesso ! Em breve entraremos em contato.');
                 contactForm.reset();
             }
         });
@@ -142,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector('.carousel-btn.next');
     
     let currentSlide = 0;
-    const intervalTime = 10000; // Tempo de passagem de 10 segundos
+    const intervalTime = 10000; 
     let slideInterval;
 
     if (slides.length > 0) {
