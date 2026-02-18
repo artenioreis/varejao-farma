@@ -125,8 +125,8 @@
 .hero-section {
     position: relative;
     width: 100%;
-    /* Altura ajustada para mobile para evitar corte excessivo da imagem */
-    min-height: 50vh; 
+    /* Ajustado para adequar a proporção da imagem no mobile */
+    min-height: 50vw; 
     overflow: hidden; /* Garante que os slides não transbordem */
     display: flex; /* Para centralizar conteúdo se houver */
     align-items: center;
@@ -150,8 +150,8 @@
     width: 100%;
     height: 100%;
     
-    /* CONFIGURAÇÃO IMPORTANTE PARA PREENCHER TELA */
-    background-size: cover; 
+    /* AJUSTADO PARA NÃO CORTAR NO MOBILE */
+    background-size: contain; 
     background-position: center center; /* Centraliza o foco da imagem */
     background-repeat: no-repeat;
     
@@ -398,6 +398,11 @@
     /* Ajuste da altura do Hero para telas maiores */
     .hero-section {
         min-height: 70vh; 
+    }
+
+    /* Restaura o background cover para preencher melhor telas largas */
+    .carousel-slide {
+        background-size: cover;
     }
 
     /* Grid do Footer em 3 colunas */

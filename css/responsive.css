@@ -7,8 +7,12 @@
     }
 
     .hero-section {
-        padding: 120px var(--spacing-md);
+        padding: 0;
         min-height: 70vh;
+    }
+
+    .carousel-slide {
+        background-size: cover;
     }
 
     .hero-section h1 {
@@ -27,7 +31,6 @@
     }
 
     .hero-section {
-        padding: 150px var(--spacing-md);
         min-height: 80vh;
     }
 
