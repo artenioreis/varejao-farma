@@ -135,29 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('scroll', highlightNavLink);
 
-    // 5. Animação de Digitação
-    const typingTextElement = document.getElementById('typing-effect-text');
-    const textToType = "Promovendo saúde, bem-estar e qualidade de vida desde 1999.";
-    let charIndex = 0;
-    let typeEffectTimeout;
-
-    function typeEffect() {
-        if (!typingTextElement) return;
-        typingTextElement.textContent = textToType.substring(0, charIndex);
-        if (charIndex < textToType.length) {
-            charIndex++;
-            typeEffectTimeout = setTimeout(typeEffect, 70);
-        }
-    }
-
-    // 6. Carrossel de Imagens (Configurado para 6 slides e 10 segundos)
+    // 5. Carrossel de Imagens (Configurado para 6 slides e 10 segundos)
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dots .dot');
     const prevBtn = document.querySelector('.carousel-btn.prev');
     const nextBtn = document.querySelector('.carousel-btn.next');
     
     let currentSlide = 0;
-    const intervalTime = 10000; // Tempo de passagem alterado para 10 segundos
+    const intervalTime = 10000; // Tempo de passagem de 10 segundos
     let slideInterval;
 
     if (slides.length > 0) {
@@ -171,16 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[index].classList.add('active');
             dots[index].classList.add('active');
             currentSlide = index;
-
-            // Inicia animação de digitação apenas no primeiro slide
-            if (index === 0 && typingTextElement) {
-                charIndex = 0;
-                typingTextElement.textContent = '';
-                clearTimeout(typeEffectTimeout);
-                typeEffect();
-            } else if (typingTextElement) {
-                clearTimeout(typeEffectTimeout);
-            }
         }
 
         function nextSlide() { showSlide(currentSlide + 1); }
