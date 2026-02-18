@@ -46,11 +46,15 @@
         <section id="hero" class="hero-section">
             <div class="carousel-container">
                 <div class="carousel-slide active" style="background-image: url('assets/images/hero-slide-1.jpg');">
+                    <div class="carousel-content">
+                        <h1 id="typing-effect-text"></h1>
+                    </div>
                 </div>
-                <div class="carousel-slide" style="background-image: url('assets/images/hero-slide-2.jpg');">
-                </div>
-                <div class="carousel-slide" style="background-image: url('assets/images/hero-slide-3.jpg');">
-                </div>
+                <div class="carousel-slide" style="background-image: url('assets/images/hero-slide-2.jpg');"></div>
+                <div class="carousel-slide" style="background-image: url('assets/images/hero-slide-3.jpg');"></div>
+                <div class="carousel-slide" style="background-image: url('assets/images/hero-slide-4.jpg');"></div>
+                <div class="carousel-slide" style="background-image: url('assets/images/hero-slide-5.jpg');"></div>
+                <div class="carousel-slide" style="background-image: url('assets/images/hero-slide-6.jpg');"></div>
 
                 <button type="button" class="carousel-btn prev" aria-label="Slide anterior">❮</button>
                 <button type="button" class="carousel-btn next" aria-label="Próximo slide">❯</button>
@@ -59,6 +63,9 @@
                     <span class="dot active" data-slide-index="0" aria-label="Ir para o slide 1"></span>
                     <span class="dot" data-slide-index="1" aria-label="Ir para o slide 2"></span>
                     <span class="dot" data-slide-index="2" aria-label="Ir para o slide 3"></span>
+                    <span class="dot" data-slide-index="3" aria-label="Ir para o slide 4"></span>
+                    <span class="dot" data-slide-index="4" aria-label="Ir para o slide 5"></span>
+                    <span class="dot" data-slide-index="5" aria-label="Ir para o slide 6"></span>
                 </div>
             </div>
         </section>
@@ -106,7 +113,6 @@
             <div class="container">
                 <h2>Nossos Parceiros</h2>
                 <p>Acreditamos que bons resultados são construídos em conjunto. Por isso, mantemos parcerias sólidas com fornecedores, laboratórios e distribuidores reconhecidos, que compartilham dos nossos valores e do nosso compromisso com qualidade, segurança e confiança.</p>
-                <p>Essas parcerias nos permitem oferecer um portfólio completo de produtos, preços competitivos e um atendimento cada vez mais eficiente aos nossos clientes.</p>
                 <div class="partners-grid">
                     <img src="assets/images/partner-logo-1.png" alt="Logo Parceiro 1">
                     <img src="assets/images/partner-logo-2.png" alt="Logo Parceiro 2">
@@ -123,18 +129,18 @@
                 <form id="contact-form" class="contact-form" novalidate>
                     <div class="form-group">
                         <label for="name">Nome:</label>
-                        <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
-                        <span id="name-error" class="error-message" aria-live="polite"></span>
+                        <input type="text" id="name" name="name" required aria-describedby="name-error">
+                        <span id="name-error" class="error-message"></span>
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
-                        <span id="email-error" class="error-message" aria-live="polite"></span>
+                        <input type="email" id="email" name="email" required aria-describedby="email-error">
+                        <span id="email-error" class="error-message"></span>
                     </div>
                     <div class="form-group">
                         <label for="message">Mensagem:</label>
-                        <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="message-error"></textarea>
-                        <span id="message-error" class="error-message" aria-live="polite"></span>
+                        <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+                        <span id="message-error" class="error-message"></span>
                     </div>
                     <button type="submit" class="btn primary-btn">Enviar Mensagem</button>
                 </form>
@@ -158,17 +164,16 @@
                     Fortaleza - CE, 60055-050
                 </address>
                 <p>E-mail: ti@varejaofarma.com.br</p>
-                
                 <div class="social-links">
-                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/5585999999999" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/5585999999999" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="footer-map">
                 <h3>Localização</h3>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.362986686036!2d-38.52709672498769!3d-3.726888696263796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c749b35974441b%3A0x199017215243204!2sRua%20Governador%20Sampaio%2C%20234%20-%20Centro%2C%20Fortaleza%20-%20CE%2C%2060055-050!5e0!3m2!1spt-BR!2sbr!4v1707758400000!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização da Varejão Farma"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.362986686036!2d-38.52709672498769!3d-3.726888696263796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c749b35974441b%3A0x199017215243204!2sRua%20Governador%20Sampaio%2C%20234%20-%20Centro%2C%20Fortaleza%20-%20CE%2C%2060055-050!5e0!3m2!1spt-BR!2sbr!4v1707758400000!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>

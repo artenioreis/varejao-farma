@@ -73,56 +73,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Validação Nome
             const nameInput = document.getElementById('name');
-            if (nameInput) {
-                if (nameInput.value.trim() === '') {
-                    displayError(nameInput, 'Por favor, digite seu nome.', 'name-error');
-                    isValid = false;
-                } else {
-                    clearError(nameInput, 'name-error');
-                }
+            if (nameInput && nameInput.value.trim() === '') {
+                displayError(nameInput, 'Por favor, digite seu nome.', 'name-error');
+                isValid = false;
+            } else if (nameInput) {
+                clearError(nameInput, 'name-error');
             }
 
-            // Validação E-mail (CORRIGIDO: Regex em uma linha única)
+            // Validação E-mail
             const emailInput = document.getElementById('email');
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (emailInput) {
-                if (emailInput.value.trim() === '') {
-                    displayError(emailInput, 'Por favor, digite seu e-mail.', 'email-error');
-                    isValid = false;
-                } else if (!emailPattern.test(emailInput.value)) {
-                    displayError(emailInput, 'Por favor, digite um e-mail válido.', 'email-error');
-                    isValid = false;
-                } else {
-                    clearError(emailInput, 'email-error');
-                }
+            if (emailInput && emailInput.value.trim() === '') {
+                displayError(emailInput, 'Por favor, digite seu e-mail.', 'email-error');
+                isValid = false;
+            } else if (emailInput && !emailPattern.test(emailInput.value)) {
+                displayError(emailInput, 'Por favor, digite um e-mail válido.', 'email-error');
+                isValid = false;
+            } else if (emailInput) {
+                clearError(emailInput, 'email-error');
             }
 
             // Validação Mensagem
             const messageInput = document.getElementById('message');
-            if (messageInput) {
-                if (messageInput.value.trim() === '') {
-                    displayError(messageInput, 'Por favor, digite sua mensagem.', 'message-error');
-                    isValid = false;
-                } else {
-                    clearError(messageInput, 'message-error');
-                }
+            if (messageInput && messageInput.value.trim() === '') {
+                displayError(messageInput, 'Por favor, digite sua mensagem.', 'message-error');
+                isValid = false;
+            } else if (messageInput) {
+                clearError(messageInput, 'message-error');
             }
 
             if (isValid) {
                 alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
                 contactForm.reset();
             }
-        });
-
-        // Limpar erros ao digitar
-        contactForm.querySelectorAll('input, textarea').forEach(input => {
-            input.addEventListener('input', () => {
-                if (input.classList.contains('invalid')) {
-                    const errorSpanId = input.getAttribute('aria-describedby');
-                    if (errorSpanId) clearError(input, errorSpanId);
-                }
-            });
         });
     }
 
@@ -156,50 +139,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingTextElement = document.getElementById('typing-effect-text');
     const textToType = "Promovendo saúde, bem-estar e qualidade de vida desde 1999.";
     let charIndex = 0;
-    let typingSpeed = 70;
     let typeEffectTimeout;
 
     function typeEffect() {
         if (!typingTextElement) return;
-
-        const currentText = textToType.substring(0, charIndex);
-        typingTextElement.textContent = currentText;
-
+        typingTextElement.textContent = textToType.substring(0, charIndex);
         if (charIndex < textToType.length) {
             charIndex++;
-            typeEffectTimeout = setTimeout(typeEffect, typingSpeed);
+            typeEffectTimeout = setTimeout(typeEffect, 70);
         }
     }
 
-    // 6. Carrossel de Imagens (Lógica Corrigida)
+    // 6. Carrossel de Imagens (Configurado para 6 slides e 10 segundos)
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dots .dot');
     const prevBtn = document.querySelector('.carousel-btn.prev');
     const nextBtn = document.querySelector('.carousel-btn.next');
     
     let currentSlide = 0;
+    const intervalTime = 10000; // Tempo de passagem alterado para 10 segundos
     let slideInterval;
-    const intervalTime = 5000;
 
     if (slides.length > 0) {
-        console.log(`Carrossel iniciado com ${slides.length} slides.`);
-
         function showSlide(index) {
-            // Garante que o índice seja válido (loop infinito)
             if (index >= slides.length) index = 0;
             if (index < 0) index = slides.length - 1;
 
-            // Remove ativos
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
 
-            // Ativa atual
             slides[index].classList.add('active');
             dots[index].classList.add('active');
+            currentSlide = index;
 
-            currentSlide = index; // Atualiza variável global
-
-            // Lógica do efeito de digitação apenas no slide 0
+            // Inicia animação de digitação apenas no primeiro slide
             if (index === 0 && typingTextElement) {
                 charIndex = 0;
                 typingTextElement.textContent = '';
@@ -210,49 +183,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
+        function nextSlide() { showSlide(currentSlide + 1); }
+        function prevSlide() { showSlide(currentSlide - 1); }
 
         function startSlideShow() {
-            stopSlideShow(); // Limpa intervalo anterior se existir
+            stopSlideShow();
             slideInterval = setInterval(nextSlide, intervalTime);
         }
 
-        function stopSlideShow() {
-            clearInterval(slideInterval);
-        }
+        function stopSlideShow() { clearInterval(slideInterval); }
 
-        // Event Listeners
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                stopSlideShow();
-                nextSlide();
-                startSlideShow();
-            });
-        }
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                stopSlideShow();
-                prevSlide();
-                startSlideShow();
-            });
-        }
+        nextBtn?.addEventListener('click', () => { stopSlideShow(); nextSlide(); startSlideShow(); });
+        prevBtn?.addEventListener('click', () => { stopSlideShow(); prevSlide(); startSlideShow(); });
 
         dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                stopSlideShow();
-                showSlide(index);
-                startSlideShow();
-            });
+            dot.addEventListener('click', () => { stopSlideShow(); showSlide(index); startSlideShow(); });
         });
 
-        // Inicialização
         showSlide(currentSlide);
         startSlideShow();
     }
