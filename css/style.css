@@ -3,26 +3,21 @@
  * Arquivo CSS principal para o Varejão Farma
  * Importa outros arquivos CSS para modularização e organização.
  */
- @import url('./_variables.css');
-@import url('./_base.css');
-@import url('./_layout.css');
-@import url('./_components.css');
-@import url('./_responsive.css');
-
+ 
 /* Importa variáveis de cores, fontes e espaçamentos */
-@import url('_variables.css');
+@import url('./_variables.css');
 
 /* Importa estilos base como reset, tipografia global */
-@import url('_base.css');
+@import url('./_base.css');
 
 /* Importa estilos de layout para cabeçalho, rodapé, seções */
-@import url('_layout.css');
+@import url('./_layout.css');
 
 /* Importa estilos para componentes reutilizáveis como botões, formulários */
-@import url('_components.css');
+@import url('./_components.css');
 
 /* Importa media queries para responsividade */
-@import url('_responsive.css');
+@import url('./_responsive.css');
 
 /*
  * Adicione quaisquer estilos globais ou overrides específicos aqui,
