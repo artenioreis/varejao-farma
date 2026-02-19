@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
             let isValid = true;
 
             const displayError = (inputElement, errorMessage, errorSpanId) => {
@@ -102,10 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearError(messageInput, 'message-error');
             }
 
-            if (isValid) {
-                // Mensagem confirmando o envio para o destinatário solicitado
-                alert('Mensagem enviada com sucesso ! Em breve entraremos em contato.');
-                contactForm.reset();
+            if (!isValid) {
+                e.preventDefault();
+            } else {
+                alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
             }
         });
     }
@@ -122,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => {
             const sectionTop = section.offsetTop - headerHeight - 30;
             const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+            if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
                 current = section.getAttribute('id');
             }
         });
