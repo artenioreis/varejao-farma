@@ -280,10 +280,10 @@
     border-radius: 2px;
 }
 
-/* Grid de Parceiros */
+/* Grid de Parceiros para 42 logos únicas */
 .partners-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--spacing-lg);
     justify-items: center;
     align-items: center;
