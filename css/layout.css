@@ -35,8 +35,20 @@
 
 /* Navegação Principal */
 .main-nav .nav-list {
-    display: flex;
-    gap: var(--spacing-lg);
+    display: none; /* Escondido por padrão no mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    gap: var(--spacing-md);
+}
+
+.main-nav .nav-list.active {
+    display: flex; /* Exibe quando a classe active é adicionada via JS */
 }
 
 .main-nav .nav-list li a {
@@ -44,6 +56,7 @@
     font-weight: 600; /* Montserrat SemiBold */
     padding: var(--spacing-xs) 0;
     position: relative;
+    display: block;
 }
 
 /* Efeito de sublinhado no hover */
@@ -83,12 +96,12 @@
 
 /* Menu Hambúrguer (Mobile) */
 .menu-toggle {
-    display: none; /* Escondido por padrão em desktop */
+    display: block; /* Habilitado no mobile */
     background: none;
     border: none;
     cursor: pointer;
     padding: var(--spacing-xs);
-    z-index: 1001; /* Acima do nav-list quando aberto */
+    z-index: 1001; 
 }
 
 .hamburger {
@@ -117,6 +130,21 @@
 
 .hamburger::after {
     top: 8px;
+}
+
+/* Transformação em "X" quando ativo */
+.menu-toggle.active .hamburger {
+    background-color: transparent;
+}
+
+.menu-toggle.active .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.menu-toggle.active .hamburger::after {
+    top: 0;
+    transform: rotate(-45deg);
 }
 
 /* =========================================
@@ -390,6 +418,22 @@
    5. Responsividade (Tablet e Desktop)
    ========================================= */
 @media (min-width: 768px) {
+    /* Esconde o botão hambúrguer no desktop */
+    .menu-toggle {
+        display: none;
+    }
+
+    /* Exibe a lista horizontalmente no desktop */
+    .main-nav .nav-list {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        padding: 0;
+        background-color: transparent;
+        box-shadow: none;
+        gap: var(--spacing-lg);
+    }
+
     /* Mostra os ícones do topo apenas em telas maiores */
     .header-social {
         display: flex;

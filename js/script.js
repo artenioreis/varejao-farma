@@ -15,11 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navList.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 767) {
-                    navList.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', false);
-                }
+                // Remove as classes ao clicar em um link para fechar o menu no mobile
+                navList.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', false);
             });
         });
     }
